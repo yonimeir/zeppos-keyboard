@@ -1,0 +1,46 @@
+{
+  "configVersion": "v3",
+  "app": {
+    "appType": "app",
+    "appId": 1000001,
+    "version": {
+      "code": 1,
+      "name": "1.0.0"
+    },
+    "appName": "Hebrew Keyboard",
+    "description": "Custom Hebrew Keyboard",
+    "vender": "Antigravity"
+  },
+  "runtime": {
+    "apiVersion": {
+      "compatible": "3.0.0",
+      "target": "3.0.0",
+      "minVersion": "3.0"
+    }
+  },
+  "permissions": [],
+  "targets": {
+    "amazfit_balance": {
+      "module": {
+        "page": {
+          "pages": [
+            "page/keyboard"
+          ]
+        }
+      },
+      "platforms": [
+        {
+          "name": "amazfit_balance",
+          "deviceSource": 260
+        }
+      ],
+      "designWidth": 480
+    }
+  },
+  "defaultLanguage": "en-US",
+  "i18n": {
+    "en-US": {
+      "name": "Hebrew Keyboard"
+    }
+  }
+}
