@@ -1,0 +1,41 @@
+@@ -0,0 +1,40 @@
+name: Build Zepp OS Package
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js v16
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Install Zeus CLI
+        run: npm install -g @zeppos/zeus-cli@1.8.2
+
+      - name: Install Project Dependencies
+        run: npm install
+
+      # Just in case the project uses any other local paths we tried
+      - name: Clean up local local envs
+        run: rm -rf node-v16* node-v20* node16.zip node20.zip
+
+      - name: Build Zepp OS App
+        run: npx @zeppos/zeus-cli build
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: ZeppOS_Hebrew_Keyboard_Zab
+          path: dist/*.zab
